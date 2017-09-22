@@ -18,7 +18,7 @@ const ConnectHOC = (WrappedComponent, states) => {
 		static filterResults(state, keys) {
 			const newState = {};
 			keys.forEach((item) => {
-				if (state[item]) {
+				if (state[item] || state[item] === '') {
 					newState[item] = state[item];
 				}
 			});

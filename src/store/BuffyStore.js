@@ -35,7 +35,7 @@ export default class BuffyStore extends Store{
 						'Spike',
 						'Drusilla'
 					],
-					selectedChar : 'Spike',
+					selectedChar : 'Buffy',
 					selectedSeason : '1',
 					quotes : quotes,
 					activeQuotes : []
@@ -61,18 +61,22 @@ export default class BuffyStore extends Store{
 
 	__getQuotes() {
 		// Convert to a number
-		const selectedSeason = +this.__state.selectedSeason;
+		const selectedSeason = this.__state.selectedSeason;
+		if (this.__state.selectedChar === '') {
+			return;
+		}
 		// this.__state.selectedSeason++
 		// t.filter((q)=>{console.log(q.season); return q.season === this.__state.selectedSeason++})
 		// this.__state.activeQuotes = [...this.__state.quotes[this.__state.selectedChar.toLowerCase()]];
 		let charQuotes = [...this.__state.quotes[this.__state.selectedChar.toLowerCase()]];
-		if (selectedSeason !== 0 || isNaN(selectedSeason)) {
+		// if (selectedSeason !== 0 || isNaN(selectedSeason)) {
+		if (selectedSeason !== '') {
 			charQuotes = charQuotes.filter((quote) => {
-				return +quote.season === selectedSeason
+				return quote.season === selectedSeason
 			});
 
-			this.__state.activeQuotes = charQuotes;
 		}
+		this.__state.activeQuotes = charQuotes;
 	}
 
 	__onDispatch(action) {

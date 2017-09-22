@@ -26,21 +26,26 @@ class SelectChar extends React.Component {
 	render() {
 
 		return (
-			<select name={ this.props.name } id="buff_char_select"
-				value={ this.props.value || '' }
-				onChange={ this.onChangeHandler }
-			>
-				{
-					this.props.values.map((optionValues) => {
+			<div className="input-field">
+				<select name={ this.props.name } id="buff_char_select"
+					value={ this.props.value || '' }
+					onChange={ this.onChangeHandler }
+				>
+					<option value="">Select an option</option>
+					{
+						this.props.values.map((optionValues) => {
 
-						return (
-							<option value={ optionValues } key={ `opt_${optionValues}` }>{ optionValues }</option>
-						);
+							return (
+								<option value={ optionValues } key={ `opt_${optionValues}` }>{ optionValues }</option>
+							);
 
-					})
-				}
+						})
+					}
 
-			</select>
+				</select>
+				<label>test</label>
+			</div>
+
 		);
 
 	}

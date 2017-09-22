@@ -9,6 +9,7 @@ const StoreHOC = (WrappedComponent, storeInstance, dispatcherInstance) => {
 
 		constructor(props) {
 			super(props);
+			console.log('StoreHOC', storeInstance, dispatcherInstance)
 		}
 
 		getChildContext() {
@@ -19,7 +20,6 @@ const StoreHOC = (WrappedComponent, storeInstance, dispatcherInstance) => {
 		}
 
 		render() {
-			console.log(this.context.store);
 
 			return(
 					<WrappedComponent { ...this.props } />
